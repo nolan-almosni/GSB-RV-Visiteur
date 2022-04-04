@@ -20,10 +20,12 @@
 
 
         <TextView
-            android:id="@+id/msgErr"
+            android:id="@+id/tvMsgErr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="25px"
+            android:text="Échec à la connexion, recommencez..."
+            android:visibility="invisible"
             android:textColor="@color/red"
             android:textStyle="bold"
             />

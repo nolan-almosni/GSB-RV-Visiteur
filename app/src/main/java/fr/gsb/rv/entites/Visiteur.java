@@ -2,55 +2,59 @@ package fr.gsb.rv.entites;
 
 public class Visiteur {
 
-    private String Matricule;
-    private String Nom;
-    private String Prenom;
-    private String Mdp;
+    private String matricule;
+    private String nom;
+    private String prenom;
+    private String mdp;
 
-    public Visiteur(String matricule, String nom, String prenom, String Mdp) {
-        this.Matricule = matricule;
-        this.Nom = nom;
-        this.Prenom = prenom;
-        this.Mdp = Mdp;
+    public Visiteur(String matricule, String nom, String prenom, String mdp) {
+        this.matricule = matricule;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mdp = mdp;
     }
 
     public Visiteur(){
     }
 
     public Visiteur(String matricule, String mdp) {
-        this.Matricule = matricule;
-        this.Mdp = mdp;
+        this.matricule = matricule;
+        this.mdp = mdp;
     }
 
     public String getMatricule() {
-        return Matricule;
+        return matricule;
     }
 
     public void setMatricule(String matricule) {
-        Matricule = matricule;
+        this.matricule = matricule;
     }
 
     public String getNom() {
-        return Nom;
+        return nom;
     }
 
     public void setNom(String nom) {
-        Nom = nom;
+        this.nom = nom;
     }
 
     public String getPrenom() {
-        return Prenom;
+        return prenom;
     }
 
     public void setPrenom(String prenom) {
-        Prenom = prenom;
+        this.prenom = prenom;
     }
 
     public String getMdp() {
-        return Mdp;
+        return mdp;
     }
 
     public void setMdp(String mdp) {
-        Mdp = mdp;
+        this.mdp = mdp;
+    }
+
+    public String toString() {
+        return nom +" "+ prenom + " ("+ matricule +")";
     }
 }

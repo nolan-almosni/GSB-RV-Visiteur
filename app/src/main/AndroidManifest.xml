@@ -2,15 +2,40 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.gsb.rv">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GSBRVVisiteur">
+        android:theme="@style/Theme.GSBRVVisiteur"
+        android:usesCleartextTraffic="true">
         <activity
-            android:name="fr.gsb.rv.MainActivity"
+            android:name=".SaisieEchantActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SaisieRvActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VisuEchantActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VisuRvActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListeRvActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RechercheRvActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuRvActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

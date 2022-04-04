@@ -3,20 +3,18 @@ package fr.gsb.rv.technique;
 
 import fr.gsb.rv.entites.Visiteur;
 
-final class Session {
-    private static Session session;
-    private static fr.gsb.rv.entites.Visiteur visiteur;
+public class Session {
+    private static Session session = null;
+    private static Visiteur visiteur;
 
-    private Session(fr.gsb.rv.entites.Visiteur visiteur){
+    private Session(Visiteur visiteur){
         this.visiteur = visiteur;
     }
 
-    public static Session ouvrir(fr.gsb.rv.entites.Visiteur visiteur) {
+    public static void ouvrir(Visiteur visiteur) {
         if (session == null){
             session = new Session(visiteur);
-
         }
-        return session;
     }
 
     public static void fermer(){
