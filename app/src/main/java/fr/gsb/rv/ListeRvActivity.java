@@ -28,13 +28,16 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
 
+import fr.gsb.rv.technique.Ip;
 import fr.gsb.rv.technique.Session;
 
 public class ListeRvActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
+    // création d'une liste des mois de l'année pour pouvoir les convertir en nombre
     private static final String[] mois = {"Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aôut", "Septembre", "Octobre", "Novembre", "Décembre"};
     TextView tvRapportVisite;
     ListView lvRapports;
+    // recupération du matricule
     private final String matricule = Session.getSession().getVisiteur().getMatricule();
     // creation d'une liste pour afficher le motif et la date de chaque rapports qui existe pour la date choisie
     List<String> rapports = new ArrayList<String>();
@@ -60,6 +63,7 @@ public class ListeRvActivity extends AppCompatActivity implements AdapterView.On
         if (intent != null) {
             if (intent.hasExtra("mois")) {
                 moisChoisi = intent.getStringExtra("mois");
+                //converti le nom du moi en nombre
                 numMoisChoisi = Arrays.asList(mois).indexOf(moisChoisi) + 1; // recupération du numero de mois séléctionné
             }
             if (intent.hasExtra("annee")) {
@@ -70,20 +74,23 @@ public class ListeRvActivity extends AppCompatActivity implements AdapterView.On
         tvRapportVisite.setText(tvRapportVisite.getText() + matricule + " du " + numMoisChoisi + "-" + anneeChoisie);
 
 
-        String url = String.format("http://10.0.2.2:5000/rapports/%s/%s/%s", matricule, numMoisChoisi, anneeChoisie);
+        String url = String.format(Ip.getIp() + "/rapports/%s/%s/%s", matricule, numMoisChoisi, anneeChoisie);
 
         Response.Listener<JSONArray> ecouteurReponse = new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 try {
                     for (int i = 0; i < response.length(); i++) {
-                        rapports.add("motif : " + response.getJSONObject(i).getString("rap_motif") + ". Date : " + response.getJSONObject(i).getString("rap_date_visite"));
+                        rapports.add("date : " + response.getJSONObject(i).getString("rap_date_visite") + ". Nom praticien : " + response.getJSONObject(i).getString("pra_nom"));
                         rapSelect.put(i,response.getJSONObject(i));
                     }
                 } catch (JSONException e) {
                     Log.e("APP-RV", "ERREUR : " + e);
                 }
-                ajoutRapportsLv();
+                if(response.length()==0){
+                    tvRapportVisite.setText("aucun rapport de visite n'a été trouver durant cette période pour le compte : " + matricule);
+                }
+                ajoutRapportsLv(); //appel a la méthode pour ajouter un rapport a la liste view
             }
         };
         Response.ErrorListener ecouteurErreur = new Response.ErrorListener() {
@@ -118,9 +125,13 @@ public class ListeRvActivity extends AppCompatActivity implements AdapterView.On
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         JSONObject rapportSelectionne = rapSelect.get(i);
-        Log.i("APP-RV", "rap_num : " + rapportSelectionne);
+        try {
+            Log.i("APP-RV", "rap_num : " + rapportSelectionne.getString("rap_num"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         Intent visuRv = new Intent(ListeRvActivity.this, VisuRvActivity.class);
-        visuRv.putExtra("rap_select", rapportSelectionne.toString());
+        visuRv.putExtra("rap_select", rapportSelectionne.toString()); //envoie du JSON selectionne a la prochaine vue
         startActivity(visuRv);
     }
 }

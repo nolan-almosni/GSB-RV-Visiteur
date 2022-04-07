@@ -1,5 +1,6 @@
 package fr.gsb.rv;
 
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -23,6 +24,7 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import fr.gsb.rv.technique.Ip;
 import fr.gsb.rv.technique.Session;
 
 import fr.gsb.rv.entites.Visiteur;
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                                             try {
                                                 seConnecter(matricule, mdp);
                                             } catch (Exception e) {
-                                                e.printStackTrace();
+                                                Log.e("APP-RV", "erreur connexion : " + e);
                                             }
                                         }
                                     }
@@ -81,13 +83,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void seConnecter(String matricule, String mdp){
-        String url = String.format("http://10.0.2.2:5000/visiteurs/%s/%s", matricule, mdp);
+        String url = String.format(Ip.getIp() + "/visiteurs/%s/%s", matricule, mdp);
         Visiteur visiteur = new Visiteur();
 
         Response.Listener<JSONObject> ecouteurReponse = new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
+                    // ferme la session actuelle si une session est deja ouverte
+                    try{
+                        Session.fermer();
+                    }catch(Exception e){
+                        Log.e("APP-RV", "ERREUR : " + e);
+                    }
+
                     visiteur.setMatricule(response.getString("vis_matricule"));
                     visiteur.setMdp(response.getString("vis_mdp"));
                     visiteur.setNom(response.getString("vis_nom"));

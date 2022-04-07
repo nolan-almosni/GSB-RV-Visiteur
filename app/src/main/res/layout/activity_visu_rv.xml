@@ -6,96 +6,169 @@
     android:layout_height="match_parent"
     tools:context=".VisuRvActivity">
 
-
-
     <TableLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp"
+        android:layout_width="320dp"
+        android:layout_height="568dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="46dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <TextView
-        android:id="@+id/tvRapportChoisi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Voici les informations du rapport séléctionné"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"/>
+            android:id="@+id/tvRapportChoisi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Voici les informations du rapport séléctionné" />
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tvRapNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:text="Numéro rapport" />
+                android:text="Numéro rapport : " />
+
+            <TextView
+                android:id="@+id/tvRapNumSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tvRapDateVisite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:text="Date visite" />
+                android:text="Date visite : " />
+
+            <TextView
+                android:id="@+id/tvRapDateVisiteSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tvRapBilan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:text="Bilan" />
+                android:text="Bilan : " />
+
+            <TextView
+                android:id="@+id/tvRapBilanSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tvRapMotif"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:text="motif" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:id="@+id/tvRapNumSelect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                />
-
-            <TextView
-                android:id="@+id/tvRapDateVisiteSelect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                />
-
-            <TextView
-                android:id="@+id/tvRapBilanSelect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                />
+                android:text="motif : " />
 
             <TextView
                 android:id="@+id/tvRapMotifSelect"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                />
+                android:layout_height="wrap_content" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvPraNom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nom du praticien : " />
+
+            <TextView
+                android:id="@+id/tvPraNomSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvPraPrenom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="prénom du praticien : " />
+
+            <TextView
+                android:id="@+id/tvPraPrenomSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvPraCp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="code postal praticien : " />
+
+            <TextView
+                android:id="@+id/tvPraCpSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvPraVille"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ville praticien : " />
+
+            <TextView
+                android:id="@+id/tvPraVilleSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <Button
+            android:id="@+id/bAfficherVisuEchant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:text="Échantillons offerts" />
+
+
     </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

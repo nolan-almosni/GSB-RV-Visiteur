@@ -8,7 +8,11 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3314080924179859" />
         <entry key="app/src/main/res/layout/activity_menu_rv.xml" value="0.1793478260869565" />
         <entry key="app/src/main/res/layout/activity_recherche_rv.xml" value="0.15070921985815602" />
-        <entry key="app/src/main/res/layout/activity_visu_rv.xml" value="0.2590644283571105" />
+        <entry key="app/src/main/res/layout/activity_saisie_echant.xml" value="0.1828125" />
+        <entry key="app/src/main/res/layout/activity_saisie_rv.xml" value="0.31855010986328125" />
+        <entry key="app/src/main/res/layout/activity_visu_echant.xml" value="0.3546539306640625" />
+        <entry key="app/src/main/res/layout/activity_visu_rv.xml" value="0.17338256835937504" />
+        <entry key="app/src/main/res/layout/item_medicaments.xml" value="0.1781661987304688" />
       </map>
     </option>
   </component>
