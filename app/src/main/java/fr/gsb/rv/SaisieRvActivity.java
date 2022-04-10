@@ -191,7 +191,7 @@ public class SaisieRvActivity extends AppCompatActivity implements DatePickerDia
         bAnnulerRv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent menuRv = new Intent(SaisieRvActivity.this, SaisieEchantActivity.class);
+                Intent menuRv = new Intent(SaisieRvActivity.this, MenuRvActivity.class);
                 startActivity(menuRv);
             }
         });
